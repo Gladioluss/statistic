@@ -1,0 +1,4994 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "defects-service dev",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/v1/string_defect_types/list": {
+      "get": {
+        "tags": [
+          "string_defect_types"
+        ],
+        "summary": " Get All String Defect Types",
+        "operationId": "_get_all_string_defect_types_api_v1_string_defect_types_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IStringDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defect_types/list/string_defects_by_id/{id}": {
+      "get": {
+        "tags": [
+          "string_defect_types"
+        ],
+        "summary": " Get All String Defects By Id",
+        "operationId": "_get_all_string_defects_by_id_api_v1_string_defect_types_list_string_defects_by_id__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IStringDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defect_types/list/string_defects_history_by_id/{id}": {
+      "get": {
+        "tags": [
+          "string_defect_types"
+        ],
+        "summary": " Get All String Defects By Id",
+        "operationId": "_get_all_string_defects_by_id_api_v1_string_defect_types_list_string_defects_history_by_id__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IStringDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defect_types/{string_defect_type_id}": {
+      "get": {
+        "tags": [
+          "string_defect_types"
+        ],
+        "summary": " Get String Defect Type By Id",
+        "operationId": "_get_string_defect_type_by_id_api_v1_string_defect_types__string_defect_type_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the StringDefectTypes",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "String Defect Type Id",
+              "description": "The UUID id of the StringDefectTypes"
+            },
+            "name": "string_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IStringDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "string_defect_types"
+        ],
+        "summary": " Update String Defect Type By Id",
+        "operationId": "_update_string_defect_type_by_id_api_v1_string_defect_types__string_defect_type_id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the StringDefectTypes",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "String Defect Type Id",
+              "description": "The UUID id of the StringDefectTypes"
+            },
+            "name": "string_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IStringDefectTypesCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_IStringDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "string_defect_types"
+        ],
+        "summary": " Delete String Defect Type By Id",
+        "operationId": "_delete_string_defect_type_by_id_api_v1_string_defect_types__string_defect_type_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "String Defect Type Id"
+            },
+            "name": "string_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IStringDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defect_types": {
+      "post": {
+        "tags": [
+          "string_defect_types"
+        ],
+        "summary": " Create String Defect Type",
+        "operationId": "_create_string_defect_type_api_v1_string_defect_types_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IStringDefectTypesCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICreateResponseBase_IStringDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defects/list": {
+      "get": {
+        "tags": [
+          "string_defects"
+        ],
+        "summary": " Get All String Defects",
+        "operationId": "_get_all_string_defects_api_v1_string_defects_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IStringDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defects/{string_defect_id}": {
+      "get": {
+        "tags": [
+          "string_defects"
+        ],
+        "summary": " Get String Defects By Id",
+        "operationId": "_get_string_defects_by_id_api_v1_string_defects__string_defect_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the StringDefects",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "String Defect Id",
+              "description": "The UUID id of the StringDefects"
+            },
+            "name": "string_defect_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IStringDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "string_defects"
+        ],
+        "summary": " Update String Defects By Id",
+        "operationId": "_update_string_defects_by_id_api_v1_string_defects__string_defect_id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the StringDefects",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "String Defect Id",
+              "description": "The UUID id of the StringDefects"
+            },
+            "name": "string_defect_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IStringDefectsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_IStringDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "string_defects"
+        ],
+        "summary": " Delete String Defects By Id",
+        "operationId": "_delete_string_defects_by_id_api_v1_string_defects__string_defect_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "String Defect Id"
+            },
+            "name": "string_defect_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IStringDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defects": {
+      "post": {
+        "tags": [
+          "string_defects"
+        ],
+        "summary": " Create String Defects",
+        "operationId": "_create_string_defects_api_v1_string_defects_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IStringDefectsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICreateResponseBase_IStringDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defects_history/list": {
+      "get": {
+        "tags": [
+          "string_defects_history"
+        ],
+        "summary": " Get All String Defects History",
+        "operationId": "_get_all_string_defects_history_api_v1_string_defects_history_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IStringDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/string_defects_history/{string_defects_history_id}": {
+      "get": {
+        "tags": [
+          "string_defects_history"
+        ],
+        "summary": " Get String Defects History By Id",
+        "operationId": "_get_string_defects_history_by_id_api_v1_string_defects_history__string_defects_history_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the StringDefectsHistory",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "String Defects History Id",
+              "description": "The UUID id of the StringDefectsHistory"
+            },
+            "name": "string_defects_history_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IStringDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "string_defects_history"
+        ],
+        "summary": " Delete String Defects History By Id",
+        "operationId": "_delete_string_defects_history_by_id_api_v1_string_defects_history__string_defects_history_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "String Defects History Id"
+            },
+            "name": "string_defects_history_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IStringDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defect_types/list": {
+      "get": {
+        "tags": [
+          "tower_defect_types"
+        ],
+        "summary": " Get All Tower Defect Types",
+        "operationId": "_get_all_tower_defect_types_api_v1_tower_defect_types_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITowerDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defect_types/list/tower_defects_by_id/{id}": {
+      "get": {
+        "tags": [
+          "tower_defect_types"
+        ],
+        "summary": " Get All Tower Defects By Id",
+        "operationId": "_get_all_tower_defects_by_id_api_v1_tower_defect_types_list_tower_defects_by_id__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITowerDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defect_types/list/tower_defects_history_by_id/{id}": {
+      "get": {
+        "tags": [
+          "tower_defect_types"
+        ],
+        "summary": " Get All Tower Defects By Id",
+        "operationId": "_get_all_tower_defects_by_id_api_v1_tower_defect_types_list_tower_defects_history_by_id__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITowerDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defect_types/{tower_defect_type_id}": {
+      "get": {
+        "tags": [
+          "tower_defect_types"
+        ],
+        "summary": " Get Tower Defect Type By Id",
+        "operationId": "_get_tower_defect_type_by_id_api_v1_tower_defect_types__tower_defect_type_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the TowerDefectTypes",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Tower Defect Type Id",
+              "description": "The UUID id of the TowerDefectTypes"
+            },
+            "name": "tower_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITowerDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "tower_defect_types"
+        ],
+        "summary": " Update Tower Defect Type By Id",
+        "operationId": "_update_tower_defect_type_by_id_api_v1_tower_defect_types__tower_defect_type_id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the TowerDefectTypes",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Tower Defect Type Id",
+              "description": "The UUID id of the TowerDefectTypes"
+            },
+            "name": "tower_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITowerDefectTypesCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_ITowerDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "tower_defect_types"
+        ],
+        "summary": " Delete Tower Defect Type By Id",
+        "operationId": "_delete_tower_defect_type_by_id_api_v1_tower_defect_types__tower_defect_type_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Tower Defect Type Id"
+            },
+            "name": "tower_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ITowerDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defect_types": {
+      "post": {
+        "tags": [
+          "tower_defect_types"
+        ],
+        "summary": " Create Tower Defect Type",
+        "operationId": "_create_tower_defect_type_api_v1_tower_defect_types_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITowerDefectTypesCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICreateResponseBase_ITowerDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defects/list": {
+      "get": {
+        "tags": [
+          "tower_defects"
+        ],
+        "summary": " Get All Tower Defects",
+        "operationId": "_get_all_tower_defects_api_v1_tower_defects_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITowerDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defects/{tower_defect_id}": {
+      "get": {
+        "tags": [
+          "tower_defects"
+        ],
+        "summary": " Get Tower Defect By Id",
+        "operationId": "_get_tower_defect_by_id_api_v1_tower_defects__tower_defect_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the TowerDefects",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Tower Defect Id",
+              "description": "The UUID id of the TowerDefects"
+            },
+            "name": "tower_defect_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITowerDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "tower_defects"
+        ],
+        "summary": " Update Tower Defect By Id",
+        "operationId": "_update_tower_defect_by_id_api_v1_tower_defects__tower_defect_id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the TowerDefects",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Tower Defect Id",
+              "description": "The UUID id of the TowerDefects"
+            },
+            "name": "tower_defect_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITowerDefectsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_ITowerDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "tower_defects"
+        ],
+        "summary": " Delete Tower Defect By Id",
+        "operationId": "_delete_tower_defect_by_id_api_v1_tower_defects__tower_defect_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Tower Defect Id"
+            },
+            "name": "tower_defect_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ITowerDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defects": {
+      "post": {
+        "tags": [
+          "tower_defects"
+        ],
+        "summary": " Create Tower Defect",
+        "operationId": "_create_tower_defect_api_v1_tower_defects_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITowerDefectsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICreateResponseBase_ITowerDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defects_history/list": {
+      "get": {
+        "tags": [
+          "tower_defects_history"
+        ],
+        "summary": " Get All Tower Defects History",
+        "operationId": "_get_all_tower_defects_history_api_v1_tower_defects_history_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITowerDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tower_defects_history/{tower_defects_history_id}": {
+      "get": {
+        "tags": [
+          "tower_defects_history"
+        ],
+        "summary": " Get Tower Defects History By Id",
+        "operationId": "_get_tower_defects_history_by_id_api_v1_tower_defects_history__tower_defects_history_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the StringDefectsHistory",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Tower Defects History Id",
+              "description": "The UUID id of the StringDefectsHistory"
+            },
+            "name": "tower_defects_history_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITowerDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "tower_defects_history"
+        ],
+        "summary": " Delete Tower Defects History By Id",
+        "operationId": "_delete_tower_defects_history_by_id_api_v1_tower_defects_history__tower_defects_history_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Tower Defects History Id"
+            },
+            "name": "tower_defects_history_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ITowerDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/track_defect_types/list": {
+      "get": {
+        "tags": [
+          "track_defect_types"
+        ],
+        "summary": " Get All Track Defect Types",
+        "operationId": "_get_all_track_defect_types_api_v1_track_defect_types_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITrackDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/track_defect_types/list/track_defects_by_id/{id}": {
+      "get": {
+        "tags": [
+          "track_defect_types"
+        ],
+        "summary": " Get All Track Defects By Id",
+        "operationId": "_get_all_track_defects_by_id_api_v1_track_defect_types_list_track_defects_by_id__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITrackDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/track_defect_types/{track_defect_type_id}": {
+      "get": {
+        "tags": [
+          "track_defect_types"
+        ],
+        "summary": " Get Track Defect Type By Id",
+        "operationId": "_get_track_defect_type_by_id_api_v1_track_defect_types__track_defect_type_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the TrackDefectTypes",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Track Defect Type Id",
+              "description": "The UUID id of the TrackDefectTypes"
+            },
+            "name": "track_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITrackDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "track_defect_types"
+        ],
+        "summary": " Update Track Defect Type By Id",
+        "operationId": "_update_track_defect_type_by_id_api_v1_track_defect_types__track_defect_type_id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the TrackDefectTypes",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Track Defect Type Id",
+              "description": "The UUID id of the TrackDefectTypes"
+            },
+            "name": "track_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITrackDefectTypesCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_ITrackDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "track_defect_types"
+        ],
+        "summary": " Delete Track Defect Type By Id",
+        "operationId": "_delete_track_defect_type_by_id_api_v1_track_defect_types__track_defect_type_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Track Defect Type Id"
+            },
+            "name": "track_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ITrackDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/track_defect_types": {
+      "post": {
+        "tags": [
+          "track_defect_types"
+        ],
+        "summary": " Create Track Defect Type",
+        "operationId": "_create_track_defect_type_api_v1_track_defect_types_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITrackDefectTypesCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICreateResponseBase_ITrackDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/track_defects/all": {
+      "get": {
+        "tags": [
+          "track_defects"
+        ],
+        "summary": " Get All Track Defects",
+        "operationId": "_get_all_track_defects_api_v1_track_defects_all_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITrackDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/track_defects/{track_defect_id}": {
+      "get": {
+        "tags": [
+          "track_defects"
+        ],
+        "summary": " Get Track Defect By Id",
+        "operationId": "_get_track_defect_by_id_api_v1_track_defects__track_defect_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the TrackDefects",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Track Defect Id",
+              "description": "The UUID id of the TrackDefects"
+            },
+            "name": "track_defect_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITrackDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "track_defects"
+        ],
+        "summary": " Update Track Defect By Id",
+        "operationId": "_update_track_defect_by_id_api_v1_track_defects__track_defect_id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the TrackDefects",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Track Defect Id",
+              "description": "The UUID id of the TrackDefects"
+            },
+            "name": "track_defect_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITrackDefectsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_ITrackDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "track_defects"
+        ],
+        "summary": " Delete Track Defect By Id",
+        "operationId": "_delete_track_defect_by_id_api_v1_track_defects__track_defect_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Track Defect Id"
+            },
+            "name": "track_defect_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ITrackDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/track_defects": {
+      "post": {
+        "tags": [
+          "track_defects"
+        ],
+        "summary": " Create Track Defect",
+        "operationId": "_create_track_defect_api_v1_track_defects_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITrackDefectsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICreateResponseBase_ITrackDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defect_types/list": {
+      "get": {
+        "tags": [
+          "wire_defect_types"
+        ],
+        "summary": " Get All Wire Defect Type",
+        "operationId": "_get_all_wire_defect_type_api_v1_wire_defect_types_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IWireDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defect_types/list/wire_defects_by_id/{id}": {
+      "get": {
+        "tags": [
+          "wire_defect_types"
+        ],
+        "summary": " Get All Wire Defects By Id",
+        "operationId": "_get_all_wire_defects_by_id_api_v1_wire_defect_types_list_wire_defects_by_id__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IWireDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defect_types/list/wire_defects_history_by_id/{id}": {
+      "get": {
+        "tags": [
+          "wire_defect_types"
+        ],
+        "summary": " Get All Wire Defects By Id",
+        "operationId": "_get_all_wire_defects_by_id_api_v1_wire_defect_types_list_wire_defects_history_by_id__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IWireDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defect_types/{wire_defect_type_id}": {
+      "get": {
+        "tags": [
+          "wire_defect_types"
+        ],
+        "summary": " Get Wire Defect Type By Id",
+        "operationId": "_get_wire_defect_type_by_id_api_v1_wire_defect_types__wire_defect_type_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the WireDefectTypes",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Wire Defect Type Id",
+              "description": "The UUID id of the WireDefectTypes"
+            },
+            "name": "wire_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IWireDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "wire_defect_types"
+        ],
+        "summary": " Update Wire Defect Type By Id",
+        "operationId": "_update_wire_defect_type_by_id_api_v1_wire_defect_types__wire_defect_type_id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the WireDefectTypes",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Wire Defect Type Id",
+              "description": "The UUID id of the WireDefectTypes"
+            },
+            "name": "wire_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IWireDefectTypesCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_IWireDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "wire_defect_types"
+        ],
+        "summary": " Delete Wire Defect Type By Id",
+        "operationId": "_delete_wire_defect_type_by_id_api_v1_wire_defect_types__wire_defect_type_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Wire Defect Type Id"
+            },
+            "name": "wire_defect_type_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ITrackDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defect_types": {
+      "post": {
+        "tags": [
+          "wire_defect_types"
+        ],
+        "summary": " Create Wire Defect Type",
+        "operationId": "_create_wire_defect_type_api_v1_wire_defect_types_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IWireDefectTypesCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICreateResponseBase_IWireDefectTypesRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defects/list": {
+      "get": {
+        "tags": [
+          "wire_defects"
+        ],
+        "summary": " Get All Wire Defects",
+        "operationId": "_get_all_wire_defects_api_v1_wire_defects_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IWireDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defects/{wire_defect_id}": {
+      "get": {
+        "tags": [
+          "wire_defects"
+        ],
+        "summary": " Get Wire Defect By Id",
+        "operationId": "_get_wire_defect_by_id_api_v1_wire_defects__wire_defect_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the WireDefects",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Wire Defect Id",
+              "description": "The UUID id of the WireDefects"
+            },
+            "name": "wire_defect_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IWireDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "wire_defects"
+        ],
+        "summary": " Update Wire Defect By Id",
+        "operationId": "_update_wire_defect_by_id_api_v1_wire_defects__wire_defect_id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the WireDefects",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Wire Defect Id",
+              "description": "The UUID id of the WireDefects"
+            },
+            "name": "wire_defect_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IWireDefectsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_IWireDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "wire_defects"
+        ],
+        "summary": " Delete Wire Defect By Id",
+        "operationId": "_delete_wire_defect_by_id_api_v1_wire_defects__wire_defect_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Wire Defect Id"
+            },
+            "name": "wire_defect_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IWireDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defects": {
+      "post": {
+        "tags": [
+          "wire_defects"
+        ],
+        "summary": " Create Wire Defect",
+        "operationId": "_create_wire_defect_api_v1_wire_defects_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IWireDefectsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICreateResponseBase_IWireDefectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defects_history/list": {
+      "get": {
+        "tags": [
+          "wire_defects_history"
+        ],
+        "summary": " Get All Wire Defects History",
+        "operationId": "_get_all_wire_defects_history_api_v1_wire_defects_history_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "title": "Size",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IWireDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wire_defects_history/{wire_defects_history_id}": {
+      "get": {
+        "tags": [
+          "wire_defects_history"
+        ],
+        "summary": " Get Wire Defects History By Id",
+        "operationId": "_get_wire_defects_history_by_id_api_v1_wire_defects_history__wire_defects_history_id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the WireDefectsHistory",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Wire Defects History Id",
+              "description": "The UUID id of the WireDefectsHistory"
+            },
+            "name": "wire_defects_history_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IWireDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "wire_defects_history"
+        ],
+        "summary": " Delete Wire Defects History By Id",
+        "operationId": "_delete_wire_defects_history_by_id_api_v1_wire_defects_history__wire_defects_history_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Wire Defects History Id"
+            },
+            "name": "wire_defects_history_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IWireDefectsHistoryRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "summary": "Metrics",
+        "description": "Endpoint that serves Prometheus metrics.",
+        "operationId": "metrics_metrics_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ICreateResponseBase_IStringDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "ICreateResponseBase[IStringDefectTypesRead]"
+      },
+      "ICreateResponseBase_IStringDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "ICreateResponseBase[IStringDefectsRead]"
+      },
+      "ICreateResponseBase_ITowerDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "ICreateResponseBase[ITowerDefectTypesRead]"
+      },
+      "ICreateResponseBase_ITowerDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "ICreateResponseBase[ITowerDefectsRead]"
+      },
+      "ICreateResponseBase_ITrackDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITrackDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "ICreateResponseBase[ITrackDefectTypesRead]"
+      },
+      "ICreateResponseBase_ITrackDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITrackDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "ICreateResponseBase[ITrackDefectsRead]"
+      },
+      "ICreateResponseBase_IWireDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "ICreateResponseBase[IWireDefectTypesRead]"
+      },
+      "ICreateResponseBase_IWireDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "ICreateResponseBase[IWireDefectsRead]"
+      },
+      "IDeleteResponseBase_IStringDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[IStringDefectTypesRead]"
+      },
+      "IDeleteResponseBase_IStringDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectsHistoryRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[IStringDefectsHistoryRead]"
+      },
+      "IDeleteResponseBase_IStringDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[IStringDefectsRead]"
+      },
+      "IDeleteResponseBase_ITowerDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[ITowerDefectTypesRead]"
+      },
+      "IDeleteResponseBase_ITowerDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectsHistoryRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[ITowerDefectsHistoryRead]"
+      },
+      "IDeleteResponseBase_ITowerDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[ITowerDefectsRead]"
+      },
+      "IDeleteResponseBase_ITrackDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITrackDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[ITrackDefectTypesRead]"
+      },
+      "IDeleteResponseBase_ITrackDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITrackDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[ITrackDefectsRead]"
+      },
+      "IDeleteResponseBase_IWireDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectsHistoryRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[IWireDefectsHistoryRead]"
+      },
+      "IDeleteResponseBase_IWireDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IDeleteResponseBase[IWireDefectsRead]"
+      },
+      "IGetResponseBase_IStringDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[IStringDefectTypesRead]"
+      },
+      "IGetResponseBase_IStringDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectsHistoryRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[IStringDefectsHistoryRead]"
+      },
+      "IGetResponseBase_IStringDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[IStringDefectsRead]"
+      },
+      "IGetResponseBase_ITowerDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[ITowerDefectTypesRead]"
+      },
+      "IGetResponseBase_ITowerDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectsHistoryRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[ITowerDefectsHistoryRead]"
+      },
+      "IGetResponseBase_ITowerDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[ITowerDefectsRead]"
+      },
+      "IGetResponseBase_ITrackDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITrackDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[ITrackDefectTypesRead]"
+      },
+      "IGetResponseBase_ITrackDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITrackDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[ITrackDefectsRead]"
+      },
+      "IGetResponseBase_IWireDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[IWireDefectTypesRead]"
+      },
+      "IGetResponseBase_IWireDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectsHistoryRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[IWireDefectsHistoryRead]"
+      },
+      "IGetResponseBase_IWireDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IGetResponseBase[IWireDefectsRead]"
+      },
+      "IGetResponsePaginated_IStringDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IStringDefectTypesRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[IStringDefectTypesRead]"
+      },
+      "IGetResponsePaginated_IStringDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IStringDefectsHistoryRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[IStringDefectsHistoryRead]"
+      },
+      "IGetResponsePaginated_IStringDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IStringDefectsRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[IStringDefectsRead]"
+      },
+      "IGetResponsePaginated_ITowerDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__ITowerDefectTypesRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[ITowerDefectTypesRead]"
+      },
+      "IGetResponsePaginated_ITowerDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__ITowerDefectsHistoryRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[ITowerDefectsHistoryRead]"
+      },
+      "IGetResponsePaginated_ITowerDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__ITowerDefectsRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[ITowerDefectsRead]"
+      },
+      "IGetResponsePaginated_ITrackDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__ITrackDefectTypesRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[ITrackDefectTypesRead]"
+      },
+      "IGetResponsePaginated_ITrackDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__ITrackDefectsRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[ITrackDefectsRead]"
+      },
+      "IGetResponsePaginated_IWireDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IWireDefectTypesRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[IWireDefectTypesRead]"
+      },
+      "IGetResponsePaginated_IWireDefectsHistoryRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IWireDefectsHistoryRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[IWireDefectsHistoryRead]"
+      },
+      "IGetResponsePaginated_IWireDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IWireDefectsRead_"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "IGetResponsePaginated[IWireDefectsRead]"
+      },
+      "IPutResponseBase_IStringDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IPutResponseBase[IStringDefectTypesRead]"
+      },
+      "IPutResponseBase_IStringDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IStringDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IPutResponseBase[IStringDefectsRead]"
+      },
+      "IPutResponseBase_ITowerDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IPutResponseBase[ITowerDefectTypesRead]"
+      },
+      "IPutResponseBase_ITowerDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IPutResponseBase[ITowerDefectsRead]"
+      },
+      "IPutResponseBase_ITrackDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITrackDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IPutResponseBase[ITrackDefectTypesRead]"
+      },
+      "IPutResponseBase_ITrackDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITrackDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IPutResponseBase[ITrackDefectsRead]"
+      },
+      "IPutResponseBase_IWireDefectTypesRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectTypesRead"
+          }
+        },
+        "type": "object",
+        "title": "IPutResponseBase[IWireDefectTypesRead]"
+      },
+      "IPutResponseBase_IWireDefectsRead_": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "type": "object",
+            "title": "Meta",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWireDefectsRead"
+          }
+        },
+        "type": "object",
+        "title": "IPutResponseBase[IWireDefectsRead]"
+      },
+      "IStringDefectTypesCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "eng_name": {
+            "type": "string",
+            "title": "Eng Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "short_name": {
+            "type": "string",
+            "title": "Short Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "eng_name",
+          "short_name"
+        ],
+        "title": "IStringDefectTypesCreate"
+      },
+      "IStringDefectTypesRead": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "eng_name": {
+            "type": "string",
+            "title": "Eng Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "short_name": {
+            "type": "string",
+            "title": "Short Name"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "eng_name",
+          "short_name",
+          "id"
+        ],
+        "title": "IStringDefectTypesRead"
+      },
+      "IStringDefectsCreate": {
+        "properties": {
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "string_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "String Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          }
+        },
+        "type": "object",
+        "required": [
+          "string_id"
+        ],
+        "title": "IStringDefectsCreate"
+      },
+      "IStringDefectsHistoryRead": {
+        "properties": {
+          "main_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Main Id"
+          },
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "string_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "String Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "string_id",
+          "id"
+        ],
+        "title": "IStringDefectsHistoryRead"
+      },
+      "IStringDefectsRead": {
+        "properties": {
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "string_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "String Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "string_id",
+          "id"
+        ],
+        "title": "IStringDefectsRead"
+      },
+      "ITowerDefectTypesCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "eng_name": {
+            "type": "string",
+            "title": "Eng Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "short_name": {
+            "type": "string",
+            "title": "Short Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "eng_name",
+          "short_name"
+        ],
+        "title": "ITowerDefectTypesCreate"
+      },
+      "ITowerDefectTypesRead": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "eng_name": {
+            "type": "string",
+            "title": "Eng Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "short_name": {
+            "type": "string",
+            "title": "Short Name"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "eng_name",
+          "short_name",
+          "id"
+        ],
+        "title": "ITowerDefectTypesRead"
+      },
+      "ITowerDefectsCreate": {
+        "properties": {
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "tower_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tower Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tower_id"
+        ],
+        "title": "ITowerDefectsCreate"
+      },
+      "ITowerDefectsHistoryRead": {
+        "properties": {
+          "main_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Main Id"
+          },
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "tower_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tower Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tower_id",
+          "id"
+        ],
+        "title": "ITowerDefectsHistoryRead"
+      },
+      "ITowerDefectsRead": {
+        "properties": {
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "tower_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Tower Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tower_id",
+          "id"
+        ],
+        "title": "ITowerDefectsRead"
+      },
+      "ITrackDefectTypesCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "eng_name": {
+            "type": "string",
+            "title": "Eng Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "eng_name"
+        ],
+        "title": "ITrackDefectTypesCreate"
+      },
+      "ITrackDefectTypesRead": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "eng_name": {
+            "type": "string",
+            "title": "Eng Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "eng_name",
+          "id"
+        ],
+        "title": "ITrackDefectTypesRead"
+      },
+      "ITrackDefectsCreate": {
+        "properties": {
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "span_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Span Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          }
+        },
+        "type": "object",
+        "required": [
+          "span_id",
+          "flight_id"
+        ],
+        "title": "ITrackDefectsCreate"
+      },
+      "ITrackDefectsRead": {
+        "properties": {
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "span_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Span Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "span_id",
+          "flight_id",
+          "id"
+        ],
+        "title": "ITrackDefectsRead"
+      },
+      "IWireDefectTypesCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "eng_name": {
+            "type": "string",
+            "title": "Eng Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "short_name": {
+            "type": "string",
+            "title": "Short Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "eng_name",
+          "short_name"
+        ],
+        "title": "IWireDefectTypesCreate"
+      },
+      "IWireDefectTypesRead": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "eng_name": {
+            "type": "string",
+            "title": "Eng Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "short_name": {
+            "type": "string",
+            "title": "Short Name"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "eng_name",
+          "short_name",
+          "id"
+        ],
+        "title": "IWireDefectTypesRead"
+      },
+      "IWireDefectsCreate": {
+        "properties": {
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "wire_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Wire Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          },
+          "distance_from_tower_1": {
+            "type": "number",
+            "title": "Distance From Tower 1"
+          },
+          "distance_from_tower_2": {
+            "type": "number",
+            "title": "Distance From Tower 2"
+          },
+          "is_confirmed": {
+            "type": "boolean",
+            "title": "Is Confirmed"
+          }
+        },
+        "type": "object",
+        "title": "IWireDefectsCreate"
+      },
+      "IWireDefectsHistoryRead": {
+        "properties": {
+          "main_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Main Id"
+          },
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "wire_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Wire Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          },
+          "distance_from_tower_1": {
+            "type": "number",
+            "title": "Distance From Tower 1"
+          },
+          "distance_from_tower_2": {
+            "type": "number",
+            "title": "Distance From Tower 2"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "wire_id",
+          "id"
+        ],
+        "title": "IWireDefectsHistoryRead"
+      },
+      "IWireDefectsRead": {
+        "properties": {
+          "defect_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Defect Id"
+          },
+          "wire_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Wire Id"
+          },
+          "flight_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Flight Id"
+          },
+          "coordinates": {
+            "type": "string",
+            "title": "Coordinates"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "photo": {
+            "type": "string",
+            "title": "Photo"
+          },
+          "distance_from_tower_1": {
+            "type": "number",
+            "title": "Distance From Tower 1"
+          },
+          "distance_from_tower_2": {
+            "type": "number",
+            "title": "Distance From Tower 2"
+          },
+          "is_confirmed": {
+            "type": "boolean",
+            "title": "Is Confirmed"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "title": "IWireDefectsRead"
+      },
+      "PageBase_DataType__IStringDefectTypesRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/IStringDefectTypesRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][IStringDefectTypesRead]"
+      },
+      "PageBase_DataType__IStringDefectsHistoryRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/IStringDefectsHistoryRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][IStringDefectsHistoryRead]"
+      },
+      "PageBase_DataType__IStringDefectsRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/IStringDefectsRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][IStringDefectsRead]"
+      },
+      "PageBase_DataType__ITowerDefectTypesRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ITowerDefectTypesRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][ITowerDefectTypesRead]"
+      },
+      "PageBase_DataType__ITowerDefectsHistoryRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ITowerDefectsHistoryRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][ITowerDefectsHistoryRead]"
+      },
+      "PageBase_DataType__ITowerDefectsRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ITowerDefectsRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][ITowerDefectsRead]"
+      },
+      "PageBase_DataType__ITrackDefectTypesRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ITrackDefectTypesRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][ITrackDefectTypesRead]"
+      },
+      "PageBase_DataType__ITrackDefectsRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ITrackDefectsRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][ITrackDefectsRead]"
+      },
+      "PageBase_DataType__IWireDefectTypesRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/IWireDefectTypesRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][IWireDefectTypesRead]"
+      },
+      "PageBase_DataType__IWireDefectsHistoryRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/IWireDefectsHistoryRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][IWireDefectsHistoryRead]"
+      },
+      "PageBase_DataType__IWireDefectsRead_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/IWireDefectsRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Page"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Size"
+          },
+          "pages": {
+            "type": "integer",
+            "title": "Pages"
+          },
+          "next_page": {
+            "type": "integer",
+            "title": "Next Page"
+          },
+          "previous_page": {
+            "type": "integer",
+            "title": "Previous Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "pages"
+        ],
+        "title": "PageBase[DataType][IWireDefectsRead]"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+#  app:
+#    build: .
+#    restart: on-failure
+#    ports:
+#      - "8000:8000"
+#    environment:
+#      DATABASE_URL: "postgresql://admin:admin@localhost:2345/defects"
+#    env_file:
+#      - dev.env
+#    depends_on:
+#      - db
+#    command: bash -c "alembic upgrade head && uvicorn app.main:app --reload"
+
+  db:
+      image: postgres:14
+      restart: always
+      environment:
+        - POSTGRES_USER=admin
+        - POSTGRES_PASSWORD=admin
+        - POSTGRES_DB=defects
+      ports:
+        - "4567:5432"
+      env_file:
+        - dev.env

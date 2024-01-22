@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-db-defects
+  labels:
+    name: postgres-db-defects
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-db-defects
+  template:
+    metadata:
+      labels:
+        app: postgres-db-defects
+    spec:
+      containers:
+      - name: postgres
+        ports:
+          - containerPort: 5432
+        image: postgres:14-alpine
+        imagePullPolicy: Always
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: defects-db-credentials
+                key: user
+
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: defects-db-credentials
+                key: password
+
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: defects-db-credentials
+                key: db

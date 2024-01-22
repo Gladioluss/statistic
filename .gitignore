@@ -1,0 +1,11 @@
+/.idea
+/poetry.lock
+/test_daemon.py
+/prod.env
+/.vscode
+__pycache__
+
+grafana_storage
+.pytest_cache
+.venv
+/.ruff_cache

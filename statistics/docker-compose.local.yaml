@@ -1,0 +1,85 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    container_name: statistics-app
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: "postgresql://admin:admin@db:5432/statistics"
+      ASYNC_DATABASE_URI: "postgresql+asyncpg://admin:admin@db:5432/statistics"
+      RABBITMQ_URL: "amqp://guest:guest@rabbitmq:5672/"
+    env_file:
+      - dev.env
+    depends_on:
+      - db
+      - rabbitmq
+
+  db:
+    image: postgres:14
+    restart: always
+    container_name: statistics-postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=statistics
+    ports:
+      - "2345:5432"
+    env_file:
+      - dev.env
+
+  db_test:
+    image: postgres:14
+    restart: always
+    container_name: statistics-postgres_test
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=statistics_test
+    ports:
+      - "2346:5432"
+    env_file:
+      - dev.env
+
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    container_name: statistics-rabbit
+    ports:
+      - "1090:5672"
+      - "1089:15672"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: statistics-prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+
+  grafana:
+    image: grafana/grafana
+    container_name: statistics-grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+
+volumes:
+  prometheus_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./prometheus_data
+  grafana_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./grafana_data

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: defects-app
+  labels:
+    name: defects-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: defects-api
+  template:
+    metadata:
+      labels:
+        app: defects-api
+    spec:
+      containers:
+      - name: defects-api
+        image: registry.cablewalker.com/os/services/defects:latest
+        imagePullPolicy: Always
+        ports:
+            - containerPort: 8000
+        env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: defects-app-urls
+                key: database_url
+          - name: ASYNC_DATABASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: defects-app-urls
+                key: async_database_uri
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-volume-mount-defects
+      volumes:
+        - name: postgres-volume-mount-defects
+          persistentVolumeClaim:
+            claimName: postgres-db-pvc-defects

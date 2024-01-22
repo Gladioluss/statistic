@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: statistics-app
+  labels:
+    name: statistics-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: statistics-api
+  template:
+    metadata:
+      labels:
+        app: statistics-api
+    spec:
+      containers:
+        - name: statistics-api
+          image: registry.cablewalker.com/os/services/statistics:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: statistics-app-urls
+                  key: database_url
+            - name: ASYNC_DATABASE_URI
+              valueFrom:
+                secretKeyRef:
+                  name: statistics-app-urls
+                  key: async_database_uri

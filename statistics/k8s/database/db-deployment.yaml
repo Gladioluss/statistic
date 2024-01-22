@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-db-statistics
+  labels:
+    name: postgres-db-statistics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-db-statistics
+  template:
+    metadata:
+      labels:
+        app: postgres-db-statistics
+    spec:
+      containers:
+        - name: postgres
+          ports:
+            - containerPort: 5432
+          image: postgres:14-alpine
+          imagePullPolicy: Always
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: statistics-db-credentials
+                  key: user
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: statistics-db-credentials
+                  key: password
+
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: statistics-db-credentials
+                  key: db

@@ -1,0 +1,6810 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "projects-service dev",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/work_type": {
+      "get": {
+        "tags": [
+          "WorkType"
+        ],
+        "summary": "Get Work Types",
+        "description": "Gets a paginated list of work types",
+        "operationId": "get_work_types_api_work_type_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IWorkTypeRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "WorkType"
+        ],
+        "summary": "Create Work Type",
+        "description": "Creates a new work type",
+        "operationId": "create_work_type_api_work_type_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IWorkTypeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPostResponseBase_IWorkTypeRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/work_type/{id}": {
+      "get": {
+        "tags": [
+          "WorkType"
+        ],
+        "summary": "Read Work Type By Id",
+        "description": "Gets a work type by id",
+        "operationId": "read_work_type_by_id_api_work_type__id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the work type",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the work type",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IWorkTypeRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "WorkType"
+        ],
+        "summary": "Update Work Type",
+        "description": "Updates a work type by its id",
+        "operationId": "update_work_type_api_work_type__id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the work type",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the work type",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IWorkTypeUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_IWorkTypeRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "WorkType"
+        ],
+        "summary": "Delete Work Type",
+        "description": "Deletes a work type by its id",
+        "operationId": "delete_work_type_api_work_type__id__delete",
+        "parameters": [
+          {
+            "description": "The UUID id of the work type",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the work type",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IWorkTypeRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/work_type/{id}/subprojects": {
+      "get": {
+        "tags": [
+          "WorkType"
+        ],
+        "summary": "Get Work Type With Subprojects List By Id",
+        "description": "Gets a work type with list of subprojects by id",
+        "operationId": "get_work_type_with_subprojects_list_by_id_api_work_type__id__subprojects_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the work type",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the work type",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IWorkTypeWithSubprojectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project_status": {
+      "get": {
+        "tags": [
+          "ProjectStatus"
+        ],
+        "summary": "Get Project Statuses",
+        "description": "Gets a paginated list of project statuses",
+        "operationId": "get_project_statuses_api_project_status_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IProjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ProjectStatus"
+        ],
+        "summary": "Create Project Status",
+        "description": "Creates a new project status",
+        "operationId": "create_project_status_api_project_status_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IProjectStatusCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPostResponseBase_IProjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project_status/{id}": {
+      "get": {
+        "tags": [
+          "ProjectStatus"
+        ],
+        "summary": "Read Project Status By Id",
+        "description": "Gets a project status by id",
+        "operationId": "read_project_status_by_id_api_project_status__id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IProjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ProjectStatus"
+        ],
+        "summary": "Update Project Status",
+        "description": "Updates a project status by its id",
+        "operationId": "update_project_status_api_project_status__id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the project status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IProjectStatusUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_IProjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ProjectStatus"
+        ],
+        "summary": "Delete Project Status",
+        "description": "Deletes a project status by its id",
+        "operationId": "delete_project_status_api_project_status__id__delete",
+        "parameters": [
+          {
+            "description": "The UUID id of the project status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IProjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project_status/{id}/projects": {
+      "get": {
+        "tags": [
+          "ProjectStatus"
+        ],
+        "summary": "Get Project Status With Projects List By Id",
+        "description": "Gets a project status with projects list by id",
+        "operationId": "get_project_status_with_projects_list_by_id_api_project_status__id__projects_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IProjectStatusWithProjectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project_status/{id}/subprojects": {
+      "get": {
+        "tags": [
+          "ProjectStatus"
+        ],
+        "summary": "Get Project Status With Subprojects List By Id",
+        "description": "Gets a project status with subprojects list by id",
+        "operationId": "get_project_status_with_subprojects_list_by_id_api_project_status__id__subprojects_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IProjectStatusWithSubrojectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project_status/{id}/full": {
+      "get": {
+        "tags": [
+          "ProjectStatus"
+        ],
+        "summary": "Get Project Status With Subprojects And Projects List By Id",
+        "description": "Gets a project status with subprojects and projects list by id",
+        "operationId": "get_project_status_with_subprojects_and_projects_list_by_id_api_project_status__id__full_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IProjectStatusWithSubrojectsAndProjectsRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/object_status/list": {
+      "get": {
+        "tags": [
+          "ObjectStatus"
+        ],
+        "summary": "Get Object Statuses",
+        "description": "Gets a paginated list of object statuses",
+        "operationId": "get_object_statuses_api_object_status_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IObjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/object_status/{id}": {
+      "get": {
+        "tags": [
+          "ObjectStatus"
+        ],
+        "summary": "Read Object Status By Id",
+        "description": "Gets an object status by id",
+        "operationId": "read_object_status_by_id_api_object_status__id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the object status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the object status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IObjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ObjectStatus"
+        ],
+        "summary": "Update Object Status",
+        "description": "Updates an object status by its id",
+        "operationId": "update_object_status_api_object_status__id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the object status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the object status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IObjectStatusUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_IObjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ObjectStatus"
+        ],
+        "summary": "Delete Object Status",
+        "description": "Deletes an object status by its id",
+        "operationId": "delete_object_status_api_object_status__id__delete",
+        "parameters": [
+          {
+            "description": "The UUID id of the object status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the object status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IObjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/object_status/{id}/objects": {
+      "get": {
+        "tags": [
+          "ObjectStatus"
+        ],
+        "summary": "Get Object Status With Objects List By Id",
+        "description": "Gets object status with all objects list by id",
+        "operationId": "get_object_status_with_objects_list_by_id_api_object_status__id__objects_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the object status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the object status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IObjectStatusWithAllObjectsListRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/object_status/{id}/towers": {
+      "get": {
+        "tags": [
+          "ObjectStatus"
+        ],
+        "summary": "Get Object Status With Towers List By Id",
+        "description": "Gets object status with towers list by id",
+        "operationId": "get_object_status_with_towers_list_by_id_api_object_status__id__towers_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the object status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the object status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IObjectStatusWithTowersListRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/object_status/{id}/spans": {
+      "get": {
+        "tags": [
+          "ObjectStatus"
+        ],
+        "summary": "Get Object Status With Spans List By Id",
+        "description": "Gets object status with spans list by id",
+        "operationId": "get_object_status_with_spans_list_by_id_api_object_status__id__spans_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the object status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the object status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IObjectStatusWithSpansListRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/object_status": {
+      "post": {
+        "tags": [
+          "ObjectStatus"
+        ],
+        "summary": "Create Object Status",
+        "description": "Creates a new object status",
+        "operationId": "create_object_status_api_object_status_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IObjectStatusCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPostResponseBase_IObjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project/list": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Get Projects",
+        "description": "Gets a paginated list of projects",
+        "operationId": "get_projects_api_project_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IProjectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project/list/status": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Get Projects List By Project Status Id",
+        "description": "Gets a paginated list of projects by status id",
+        "operationId": "get_projects_list_by_project_status_id_api_project_list_status_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_IProjectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project/{id}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Read Project By Id",
+        "description": "Gets a project by id",
+        "operationId": "read_project_by_id_api_project__id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IProjectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Update Project",
+        "description": "Updates a project by its id",
+        "operationId": "update_project_api_project__id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the project",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IProjectUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_IProjectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Delete Project",
+        "description": "Deletes a project by its id",
+        "operationId": "delete_project_api_project__id__delete",
+        "parameters": [
+          {
+            "description": "The UUID id of the project",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_IProjectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project/{id}/subprojects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Get Project With Subprojects List By Id",
+        "description": "Gets a project by id",
+        "operationId": "get_project_with_subprojects_list_by_id_api_project__id__subprojects_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IProjectWithSubprojectsListRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project/{id}/status": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Get Project With Status By Id",
+        "description": "Gets a project by id",
+        "operationId": "get_project_with_status_by_id_api_project__id__status_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IProjectWithStatus_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project/{id}/full": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Get Full Project Info By Id",
+        "description": "Gets a full project information by id",
+        "operationId": "get_full_project_info_by_id_api_project__id__full_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_IFullProjectInfoRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/project": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Create Project",
+        "description": "Creates a new project",
+        "operationId": "create_project_api_project_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IProjectCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPostResponseBase_IProjectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/list": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Get Subprojects",
+        "description": "Gets a paginated list of subprojects",
+        "operationId": "get_subprojects_api_subproject_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ISubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/list/projects_status": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Get Subprojects List By Project Status Id",
+        "description": "Gets a paginated list of subprojects by status id",
+        "operationId": "get_subprojects_list_by_project_status_id_api_subproject_list_projects_status_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ISubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/list/work_type": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Get Subprojects List By Work Type Id",
+        "description": "Gets a paginated list of subprojects by work type id",
+        "operationId": "get_subprojects_list_by_work_type_id_api_subproject_list_work_type_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the work type",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the work type",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ISubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/list/project": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Get Subprojects List By Project Id",
+        "description": "Gets a paginated list of subprojects by project id",
+        "operationId": "get_subprojects_list_by_project_id_api_subproject_list_project_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the project",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the project",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ISubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/{id}": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Read Subproject By Id",
+        "description": "Gets a subproject by id",
+        "operationId": "read_subproject_by_id_api_subproject__id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Update Subproject",
+        "description": "Updates a subproject by its id",
+        "operationId": "update_subproject_api_subproject__id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ISubprojectUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_ISubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Delete Subproject",
+        "description": "Deletes a subproject by its id",
+        "operationId": "delete_subproject_api_subproject__id__delete",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ISubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/{id}/status": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Get Subproject With Status By Id",
+        "description": "Gets a subproject with status by id",
+        "operationId": "get_subproject_with_status_by_id_api_subproject__id__status_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISubprojectWithStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/{id}/project": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Get Subproject With Project By Id",
+        "description": "Gets a subproject with project by id",
+        "operationId": "get_subproject_with_project_by_id_api_subproject__id__project_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISubprojectWithProjectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/{id}/work_type": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Get Subproject With Work Type By Id",
+        "description": "Gets a subproject with work type by id",
+        "operationId": "get_subproject_with_work_type_by_id_api_subproject__id__work_type_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISubprojectWithWorkTypeRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject/{id}/full": {
+      "get": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Get Subproject With Full Info By Id",
+        "description": "Gets a subproject with work type by id",
+        "operationId": "get_subproject_with_full_info_by_id_api_subproject__id__full_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISubprojectFullInfoRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subproject": {
+      "post": {
+        "tags": [
+          "Subprojects"
+        ],
+        "summary": "Create Subproject",
+        "description": "Creates a new subproject",
+        "operationId": "create_subproject_api_subproject_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ISubprojectCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPostResponseBase_ISubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tower/list": {
+      "get": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Get Towers List",
+        "description": "Gets a paginated list of towers",
+        "operationId": "get_towers_list_api_tower_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITowerRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tower/list/status": {
+      "get": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Get Towers List By Status Id",
+        "description": "Gets a paginated list of towers by status id",
+        "operationId": "get_towers_list_by_status_id_api_tower_list_status_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the object status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the object status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITowerRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tower/list/subproject": {
+      "get": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Get Towers List By Subproject Id",
+        "description": "Gets a paginated list of towers by subproject id",
+        "operationId": "get_towers_list_by_subproject_id_api_tower_list_subproject_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ITowerRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tower/{id}": {
+      "get": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Read Tower By Id",
+        "description": "Gets a tower by id",
+        "operationId": "read_tower_by_id_api_tower__id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the tower",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the tower",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITowerRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Update Tower",
+        "description": "Updates a tower by its id",
+        "operationId": "update_tower_api_tower__id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the tower",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the tower",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITowerUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_ITowerRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Delete Tower",
+        "description": "Deletes a tower by its id",
+        "operationId": "delete_tower_api_tower__id__delete",
+        "parameters": [
+          {
+            "description": "The UUID id of the tower",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the tower",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ITowerRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tower/{id}/status": {
+      "get": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Get Tower With Object Status By Id",
+        "description": "Gets a tower with status by id",
+        "operationId": "get_tower_with_object_status_by_id_api_tower__id__status_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the tower",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the tower",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITowerWithObjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tower/{id}/subproject": {
+      "get": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Get Tower With Subproject By Id",
+        "description": "Gets a tower with subproject by id",
+        "operationId": "get_tower_with_subproject_by_id_api_tower__id__subproject_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the tower",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the tower",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITowerWithSubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tower/{id}/full": {
+      "get": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Get Tower With Subproject And Status By Id",
+        "description": "Gets a tower with subproject and status by id",
+        "operationId": "get_tower_with_subproject_and_status_by_id_api_tower__id__full_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the tower",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the tower",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ITowerFullInfoRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tower": {
+      "post": {
+        "tags": [
+          "Towers"
+        ],
+        "summary": "Create Tower",
+        "description": "Creates a new tower",
+        "operationId": "create_tower_api_tower_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ITowerCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPostResponseBase_ITowerRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/span/list": {
+      "get": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Get Spans",
+        "description": "Gets a paginated list of spans",
+        "operationId": "get_spans_api_span_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ISpanRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/span/list/status": {
+      "get": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Get Spans List By Status Id",
+        "description": "Gets a paginated list of spans by status id",
+        "operationId": "get_spans_list_by_status_id_api_span_list_status_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the object status",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the object status",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ISpanRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/span/list/subproject": {
+      "get": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Get Spans List By Subproject Id",
+        "description": "Gets a paginated list of spans by subproject id",
+        "operationId": "get_spans_list_by_subproject_id_api_span_list_subproject_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the subproject",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the subproject",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponsePaginated_ISpanRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/span/{id}": {
+      "get": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Read Span By Id",
+        "description": "Gets a span by id",
+        "operationId": "read_span_by_id_api_span__id__get",
+        "parameters": [
+          {
+            "description": "The UUID id of the span",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the span",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISpanRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Update Span",
+        "description": "Updates a span by its id",
+        "operationId": "update_span_api_span__id__put",
+        "parameters": [
+          {
+            "description": "The UUID id of the span",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the span",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ISpanUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPutResponseBase_ISpanRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Delete Span",
+        "description": "Deletes a span by its id",
+        "operationId": "delete_span_api_span__id__delete",
+        "parameters": [
+          {
+            "description": "The UUID id of the span",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the span",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDeleteResponseBase_ISpanRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/span/{id}/status": {
+      "get": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Get Span With Object Status By Id",
+        "description": "Gets a span with status by id",
+        "operationId": "get_span_with_object_status_by_id_api_span__id__status_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the span",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the span",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISpanWithObjectStatusRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/span/{id}/subproject": {
+      "get": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Get Span With Subproject By Id",
+        "description": "Gets a span with subproject by id",
+        "operationId": "get_span_with_subproject_by_id_api_span__id__subproject_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the span",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the span",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISpanWithSubprojectRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/span/{id}/full": {
+      "get": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Get Span With Subproject And Status By Id",
+        "description": "Gets a span with subproject and status by id",
+        "operationId": "get_span_with_subproject_and_status_by_id_api_span__id__full_get",
+        "parameters": [
+          {
+            "description": "The UUID id of the span",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "description": "The UUID id of the span",
+              "format": "uuid"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetResponseBase_ISpanWithFullInfoRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/span": {
+      "post": {
+        "tags": [
+          "Spans"
+        ],
+        "summary": "Create Span",
+        "description": "Creates a new span",
+        "operationId": "create_span_api_span_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ISpanCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPostResponseBase_ISpanRead_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "IDeleteResponseBase_IObjectStatusRead_": {
+        "title": "IDeleteResponseBase[IObjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IObjectStatusRead"
+          }
+        }
+      },
+      "IDeleteResponseBase_IProjectRead_": {
+        "title": "IDeleteResponseBase[IProjectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectRead"
+          }
+        }
+      },
+      "IDeleteResponseBase_IProjectStatusRead_": {
+        "title": "IDeleteResponseBase[IProjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectStatusRead"
+          }
+        }
+      },
+      "IDeleteResponseBase_ISpanRead_": {
+        "title": "IDeleteResponseBase[ISpanRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISpanRead"
+          }
+        }
+      },
+      "IDeleteResponseBase_ISubprojectRead_": {
+        "title": "IDeleteResponseBase[ISubprojectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISubprojectRead"
+          }
+        }
+      },
+      "IDeleteResponseBase_ITowerRead_": {
+        "title": "IDeleteResponseBase[ITowerRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerRead"
+          }
+        }
+      },
+      "IDeleteResponseBase_IWorkTypeRead_": {
+        "title": "IDeleteResponseBase[IWorkTypeRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data deleted correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWorkTypeRead"
+          }
+        }
+      },
+      "IFullProjectInfoRead": {
+        "title": "IFullProjectInfoRead",
+        "required": [
+          "id",
+          "name",
+          "order_number"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "order_number": {
+            "title": "Order Number",
+            "type": "string"
+          },
+          "curator_id": {
+            "title": "Curator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "title": "Customer Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin_id": {
+            "title": "Admin Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProjectStatus"
+          },
+          "subprojects": {
+            "title": "Subprojects",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISubprojectWithoutProjectId"
+            },
+            "default": []
+          }
+        }
+      },
+      "IGetResponseBase_IFullProjectInfoRead_": {
+        "title": "IGetResponseBase[IFullProjectInfoRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IFullProjectInfoRead"
+          }
+        }
+      },
+      "IGetResponseBase_IObjectStatusRead_": {
+        "title": "IGetResponseBase[IObjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IObjectStatusRead"
+          }
+        }
+      },
+      "IGetResponseBase_IObjectStatusWithAllObjectsListRead_": {
+        "title": "IGetResponseBase[IObjectStatusWithAllObjectsListRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IObjectStatusWithAllObjectsListRead"
+          }
+        }
+      },
+      "IGetResponseBase_IObjectStatusWithSpansListRead_": {
+        "title": "IGetResponseBase[IObjectStatusWithSpansListRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IObjectStatusWithSpansListRead"
+          }
+        }
+      },
+      "IGetResponseBase_IObjectStatusWithTowersListRead_": {
+        "title": "IGetResponseBase[IObjectStatusWithTowersListRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IObjectStatusWithTowersListRead"
+          }
+        }
+      },
+      "IGetResponseBase_IProjectRead_": {
+        "title": "IGetResponseBase[IProjectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectRead"
+          }
+        }
+      },
+      "IGetResponseBase_IProjectStatusRead_": {
+        "title": "IGetResponseBase[IProjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectStatusRead"
+          }
+        }
+      },
+      "IGetResponseBase_IProjectStatusWithProjectsRead_": {
+        "title": "IGetResponseBase[IProjectStatusWithProjectsRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectStatusWithProjectsRead"
+          }
+        }
+      },
+      "IGetResponseBase_IProjectStatusWithSubrojectsAndProjectsRead_": {
+        "title": "IGetResponseBase[IProjectStatusWithSubrojectsAndProjectsRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectStatusWithSubrojectsAndProjectsRead"
+          }
+        }
+      },
+      "IGetResponseBase_IProjectStatusWithSubrojectsRead_": {
+        "title": "IGetResponseBase[IProjectStatusWithSubrojectsRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectStatusWithSubrojectsRead"
+          }
+        }
+      },
+      "IGetResponseBase_IProjectWithStatus_": {
+        "title": "IGetResponseBase[IProjectWithStatus]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectWithStatus"
+          }
+        }
+      },
+      "IGetResponseBase_IProjectWithSubprojectsListRead_": {
+        "title": "IGetResponseBase[IProjectWithSubprojectsListRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectWithSubprojectsListRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISpanRead_": {
+        "title": "IGetResponseBase[ISpanRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISpanRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISpanWithFullInfoRead_": {
+        "title": "IGetResponseBase[ISpanWithFullInfoRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISpanWithFullInfoRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISpanWithObjectStatusRead_": {
+        "title": "IGetResponseBase[ISpanWithObjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISpanWithObjectStatusRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISpanWithSubprojectRead_": {
+        "title": "IGetResponseBase[ISpanWithSubprojectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISpanWithSubprojectRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISubprojectFullInfoRead_": {
+        "title": "IGetResponseBase[ISubprojectFullInfoRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISubprojectFullInfoRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISubprojectRead_": {
+        "title": "IGetResponseBase[ISubprojectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISubprojectRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISubprojectWithProjectRead_": {
+        "title": "IGetResponseBase[ISubprojectWithProjectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISubprojectWithProjectRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISubprojectWithStatusRead_": {
+        "title": "IGetResponseBase[ISubprojectWithStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISubprojectWithStatusRead"
+          }
+        }
+      },
+      "IGetResponseBase_ISubprojectWithWorkTypeRead_": {
+        "title": "IGetResponseBase[ISubprojectWithWorkTypeRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISubprojectWithWorkTypeRead"
+          }
+        }
+      },
+      "IGetResponseBase_ITowerFullInfoRead_": {
+        "title": "IGetResponseBase[ITowerFullInfoRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerFullInfoRead"
+          }
+        }
+      },
+      "IGetResponseBase_ITowerRead_": {
+        "title": "IGetResponseBase[ITowerRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerRead"
+          }
+        }
+      },
+      "IGetResponseBase_ITowerWithObjectStatusRead_": {
+        "title": "IGetResponseBase[ITowerWithObjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerWithObjectStatusRead"
+          }
+        }
+      },
+      "IGetResponseBase_ITowerWithSubprojectRead_": {
+        "title": "IGetResponseBase[ITowerWithSubprojectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerWithSubprojectRead"
+          }
+        }
+      },
+      "IGetResponseBase_IWorkTypeRead_": {
+        "title": "IGetResponseBase[IWorkTypeRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWorkTypeRead"
+          }
+        }
+      },
+      "IGetResponseBase_IWorkTypeWithSubprojectsRead_": {
+        "title": "IGetResponseBase[IWorkTypeWithSubprojectsRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWorkTypeWithSubprojectsRead"
+          }
+        }
+      },
+      "IGetResponsePaginated_IObjectStatusRead_": {
+        "title": "IGetResponsePaginated[IObjectStatusRead]",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IObjectStatusRead_"
+          }
+        }
+      },
+      "IGetResponsePaginated_IProjectRead_": {
+        "title": "IGetResponsePaginated[IProjectRead]",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IProjectRead_"
+          }
+        }
+      },
+      "IGetResponsePaginated_IProjectStatusRead_": {
+        "title": "IGetResponsePaginated[IProjectStatusRead]",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IProjectStatusRead_"
+          }
+        }
+      },
+      "IGetResponsePaginated_ISpanRead_": {
+        "title": "IGetResponsePaginated[ISpanRead]",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__ISpanRead_"
+          }
+        }
+      },
+      "IGetResponsePaginated_ISubprojectRead_": {
+        "title": "IGetResponsePaginated[ISubprojectRead]",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__ISubprojectRead_"
+          }
+        }
+      },
+      "IGetResponsePaginated_ITowerRead_": {
+        "title": "IGetResponsePaginated[ITowerRead]",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__ITowerRead_"
+          }
+        }
+      },
+      "IGetResponsePaginated_IWorkTypeRead_": {
+        "title": "IGetResponsePaginated[IWorkTypeRead]",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data got correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageBase_DataType__IWorkTypeRead_"
+          }
+        }
+      },
+      "IObjectStatusCreate": {
+        "title": "IObjectStatusCreate",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "IObjectStatusRead": {
+        "title": "IObjectStatusRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "IObjectStatusUpdate": {
+        "title": "IObjectStatusUpdate",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "IObjectStatusWithAllObjectsListRead": {
+        "title": "IObjectStatusWithAllObjectsListRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "towers_entities": {
+            "title": "Towers Entities",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITowerWithoutObjectStatusId"
+            },
+            "default": []
+          },
+          "spans_entities": {
+            "title": "Spans Entities",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISpanWithoutObjectStatusId"
+            },
+            "default": []
+          }
+        }
+      },
+      "IObjectStatusWithSpansListRead": {
+        "title": "IObjectStatusWithSpansListRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "spans_entities": {
+            "title": "Spans Entities",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISpanWithoutObjectStatusId"
+            },
+            "default": []
+          }
+        }
+      },
+      "IObjectStatusWithTowersListRead": {
+        "title": "IObjectStatusWithTowersListRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "towers_entities": {
+            "title": "Towers Entities",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITowerWithoutObjectStatusId"
+            },
+            "default": []
+          }
+        }
+      },
+      "IPostResponseBase_IObjectStatusRead_": {
+        "title": "IPostResponseBase[IObjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IObjectStatusRead"
+          }
+        }
+      },
+      "IPostResponseBase_IProjectRead_": {
+        "title": "IPostResponseBase[IProjectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectRead"
+          }
+        }
+      },
+      "IPostResponseBase_IProjectStatusRead_": {
+        "title": "IPostResponseBase[IProjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectStatusRead"
+          }
+        }
+      },
+      "IPostResponseBase_ISpanRead_": {
+        "title": "IPostResponseBase[ISpanRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISpanRead"
+          }
+        }
+      },
+      "IPostResponseBase_ISubprojectRead_": {
+        "title": "IPostResponseBase[ISubprojectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISubprojectRead"
+          }
+        }
+      },
+      "IPostResponseBase_ITowerRead_": {
+        "title": "IPostResponseBase[ITowerRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerRead"
+          }
+        }
+      },
+      "IPostResponseBase_IWorkTypeRead_": {
+        "title": "IPostResponseBase[IWorkTypeRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data created correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWorkTypeRead"
+          }
+        }
+      },
+      "IProjectCreate": {
+        "title": "IProjectCreate",
+        "required": [
+          "name",
+          "order_number"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "order_number": {
+            "title": "Order Number",
+            "type": "string"
+          },
+          "curator_id": {
+            "title": "Curator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "title": "Customer Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin_id": {
+            "title": "Admin Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "IProjectRead": {
+        "title": "IProjectRead",
+        "required": [
+          "name",
+          "order_number",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "order_number": {
+            "title": "Order Number",
+            "type": "string"
+          },
+          "curator_id": {
+            "title": "Curator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "title": "Customer Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin_id": {
+            "title": "Admin Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "IProjectStatusCreate": {
+        "title": "IProjectStatusCreate",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "IProjectStatusRead": {
+        "title": "IProjectStatusRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "IProjectStatusUpdate": {
+        "title": "IProjectStatusUpdate",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "IProjectStatusWithProjectsRead": {
+        "title": "IProjectStatusWithProjectsRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IProjectWithoutStatusId"
+            },
+            "default": []
+          }
+        }
+      },
+      "IProjectStatusWithSubrojectsAndProjectsRead": {
+        "title": "IProjectStatusWithSubrojectsAndProjectsRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "projects": {
+            "title": "Projects",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IProjectWithoutStatusId"
+            },
+            "default": []
+          },
+          "subprojects": {
+            "title": "Subprojects",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISubprojectWithoutStatusId"
+            },
+            "default": []
+          }
+        }
+      },
+      "IProjectStatusWithSubrojectsRead": {
+        "title": "IProjectStatusWithSubrojectsRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "subprojects": {
+            "title": "Subprojects",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISubprojectWithoutStatusId"
+            },
+            "default": []
+          }
+        }
+      },
+      "IProjectUpdate": {
+        "title": "IProjectUpdate",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "order_number": {
+            "title": "Order Number",
+            "type": "string"
+          },
+          "curator_id": {
+            "title": "Curator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "title": "Customer Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin_id": {
+            "title": "Admin Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "IProjectWithStatus": {
+        "title": "IProjectWithStatus",
+        "required": [
+          "id",
+          "name",
+          "order_number"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "order_number": {
+            "title": "Order Number",
+            "type": "string"
+          },
+          "curator_id": {
+            "title": "Curator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "title": "Customer Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin_id": {
+            "title": "Admin Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProjectStatus"
+          }
+        }
+      },
+      "IProjectWithSubprojectsListRead": {
+        "title": "IProjectWithSubprojectsListRead",
+        "required": [
+          "name",
+          "order_number",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "order_number": {
+            "title": "Order Number",
+            "type": "string"
+          },
+          "curator_id": {
+            "title": "Curator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "title": "Customer Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin_id": {
+            "title": "Admin Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "subprojects": {
+            "title": "Subprojects",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISubprojectWithoutProjectId"
+            },
+            "default": []
+          }
+        }
+      },
+      "IProjectWithoutStatusId": {
+        "title": "IProjectWithoutStatusId",
+        "required": [
+          "id",
+          "name",
+          "order_number"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "order_number": {
+            "title": "Order Number",
+            "type": "string"
+          },
+          "curator_id": {
+            "title": "Curator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "title": "Customer Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin_id": {
+            "title": "Admin Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "IPutResponseBase_IObjectStatusRead_": {
+        "title": "IPutResponseBase[IObjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IObjectStatusRead"
+          }
+        }
+      },
+      "IPutResponseBase_IProjectRead_": {
+        "title": "IPutResponseBase[IProjectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectRead"
+          }
+        }
+      },
+      "IPutResponseBase_IProjectStatusRead_": {
+        "title": "IPutResponseBase[IProjectStatusRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IProjectStatusRead"
+          }
+        }
+      },
+      "IPutResponseBase_ISpanRead_": {
+        "title": "IPutResponseBase[ISpanRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISpanRead"
+          }
+        }
+      },
+      "IPutResponseBase_ISubprojectRead_": {
+        "title": "IPutResponseBase[ISubprojectRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ISubprojectRead"
+          }
+        }
+      },
+      "IPutResponseBase_ITowerRead_": {
+        "title": "IPutResponseBase[ITowerRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/ITowerRead"
+          }
+        }
+      },
+      "IPutResponseBase_IWorkTypeRead_": {
+        "title": "IPutResponseBase[IWorkTypeRead]",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Data updated correctly"
+          },
+          "meta": {
+            "title": "Meta",
+            "type": "object",
+            "default": {}
+          },
+          "data": {
+            "$ref": "#/components/schemas/IWorkTypeRead"
+          }
+        }
+      },
+      "ISpanCreate": {
+        "title": "ISpanCreate",
+        "required": [
+          "name",
+          "subproject_id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "wires": {
+            "title": "Wires",
+            "type": "object",
+            "default": {}
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ISpanRead": {
+        "title": "ISpanRead",
+        "required": [
+          "name",
+          "subproject_id",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "wires": {
+            "title": "Wires",
+            "type": "object",
+            "default": {}
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ISpanUpdate": {
+        "title": "ISpanUpdate",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "wires": {
+            "title": "Wires",
+            "type": "object",
+            "default": {}
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ISpanWithFullInfoRead": {
+        "title": "ISpanWithFullInfoRead",
+        "required": [
+          "id",
+          "name",
+          "subproject"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "wires": {
+            "title": "Wires",
+            "type": "object"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ObjectStatus"
+          },
+          "subproject": {
+            "$ref": "#/components/schemas/Subproject"
+          }
+        }
+      },
+      "ISpanWithObjectStatusRead": {
+        "title": "ISpanWithObjectStatusRead",
+        "required": [
+          "id",
+          "name",
+          "subproject_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "wires": {
+            "title": "Wires",
+            "type": "object"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ObjectStatus"
+          }
+        }
+      },
+      "ISpanWithSubprojectRead": {
+        "title": "ISpanWithSubprojectRead",
+        "required": [
+          "subproject"
+        ],
+        "type": "object",
+        "properties": {
+          "subproject": {
+            "$ref": "#/components/schemas/Subproject"
+          }
+        }
+      },
+      "ISpanWithoutObjectStatusId": {
+        "title": "ISpanWithoutObjectStatusId",
+        "required": [
+          "id",
+          "name",
+          "subproject_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "wires": {
+            "title": "Wires",
+            "type": "object"
+          }
+        }
+      },
+      "ISpanWithoutSubprojectId": {
+        "title": "ISpanWithoutSubprojectId",
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "wires": {
+            "title": "Wires",
+            "type": "object"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ISubprojectCreate": {
+        "title": "ISubprojectCreate",
+        "required": [
+          "name",
+          "pl_segment_id",
+          "project_id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type_id": {
+            "title": "Work Type Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ISubprojectFullInfoRead": {
+        "title": "ISubprojectFullInfoRead",
+        "required": [
+          "id",
+          "name",
+          "pl_segment_id",
+          "project",
+          "work_type",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          },
+          "work_type": {
+            "$ref": "#/components/schemas/WorkType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProjectStatus"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITowerWithoutSubprojectId"
+            },
+            "default": []
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISpanWithoutSubprojectId"
+            },
+            "default": []
+          }
+        }
+      },
+      "ISubprojectRead": {
+        "title": "ISubprojectRead",
+        "required": [
+          "name",
+          "pl_segment_id",
+          "project_id",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type_id": {
+            "title": "Work Type Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ISubprojectUpdate": {
+        "title": "ISubprojectUpdate",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type_id": {
+            "title": "Work Type Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ISubprojectWithProjectRead": {
+        "title": "ISubprojectWithProjectRead",
+        "required": [
+          "id",
+          "name",
+          "pl_segment_id",
+          "work_type_id",
+          "status_id",
+          "project"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type_id": {
+            "title": "Work Type Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          }
+        }
+      },
+      "ISubprojectWithStatusRead": {
+        "title": "ISubprojectWithStatusRead",
+        "required": [
+          "id",
+          "name",
+          "pl_segment_id",
+          "work_type_id",
+          "project_id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type_id": {
+            "title": "Work Type Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProjectStatus"
+          }
+        }
+      },
+      "ISubprojectWithWorkTypeRead": {
+        "title": "ISubprojectWithWorkTypeRead",
+        "required": [
+          "id",
+          "name",
+          "pl_segment_id",
+          "project_id",
+          "work_type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type": {
+            "$ref": "#/components/schemas/WorkType"
+          }
+        }
+      },
+      "ISubprojectWithoutProjectId": {
+        "title": "ISubprojectWithoutProjectId",
+        "required": [
+          "id",
+          "name",
+          "pl_segment_id",
+          "work_type_id",
+          "status_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type_id": {
+            "title": "Work Type Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ISubprojectWithoutStatusId": {
+        "title": "ISubprojectWithoutStatusId",
+        "required": [
+          "id",
+          "name",
+          "pl_segment_id",
+          "work_type_id",
+          "project_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "default": []
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type_id": {
+            "title": "Work Type Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ITowerCreate": {
+        "title": "ITowerCreate",
+        "required": [
+          "name",
+          "subproject_id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ITowerFullInfoRead": {
+        "title": "ITowerFullInfoRead",
+        "required": [
+          "id",
+          "name",
+          "subproject"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ObjectStatus"
+          },
+          "subproject": {
+            "$ref": "#/components/schemas/Subproject"
+          }
+        }
+      },
+      "ITowerRead": {
+        "title": "ITowerRead",
+        "required": [
+          "name",
+          "subproject_id",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ITowerUpdate": {
+        "title": "ITowerUpdate",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ITowerWithObjectStatusRead": {
+        "title": "ITowerWithObjectStatusRead",
+        "required": [
+          "id",
+          "name",
+          "subproject_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ObjectStatus"
+          }
+        }
+      },
+      "ITowerWithSubprojectRead": {
+        "title": "ITowerWithSubprojectRead",
+        "required": [
+          "id",
+          "name",
+          "subproject"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "subproject": {
+            "$ref": "#/components/schemas/Subproject"
+          }
+        }
+      },
+      "ITowerWithoutObjectStatusId": {
+        "title": "ITowerWithoutObjectStatusId",
+        "required": [
+          "id",
+          "name",
+          "subproject_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "subproject_id": {
+            "title": "Subproject Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ITowerWithoutSubprojectId": {
+        "title": "ITowerWithoutSubprojectId",
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "IWorkTypeCreate": {
+        "title": "IWorkTypeCreate",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "IWorkTypeRead": {
+        "title": "IWorkTypeRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "IWorkTypeUpdate": {
+        "title": "IWorkTypeUpdate",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "IWorkTypeWithSubprojectsRead": {
+        "title": "IWorkTypeWithSubprojectsRead",
+        "required": [
+          "name",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "subprojects": {
+            "title": "Subprojects",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subproject"
+            },
+            "default": []
+          }
+        }
+      },
+      "ObjectStatus": {
+        "title": "ObjectStatus",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "PageBase_DataType__IObjectStatusRead_": {
+        "title": "PageBase[DataType][IObjectStatusRead]",
+        "required": [
+          "items",
+          "total",
+          "pages"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IObjectStatusRead"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "size": {
+            "title": "Size",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "pages": {
+            "title": "Pages",
+            "type": "integer"
+          },
+          "next_page": {
+            "title": "Next Page",
+            "type": "integer"
+          },
+          "previous_page": {
+            "title": "Previous Page",
+            "type": "integer"
+          }
+        }
+      },
+      "PageBase_DataType__IProjectRead_": {
+        "title": "PageBase[DataType][IProjectRead]",
+        "required": [
+          "items",
+          "total",
+          "pages"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IProjectRead"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "size": {
+            "title": "Size",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "pages": {
+            "title": "Pages",
+            "type": "integer"
+          },
+          "next_page": {
+            "title": "Next Page",
+            "type": "integer"
+          },
+          "previous_page": {
+            "title": "Previous Page",
+            "type": "integer"
+          }
+        }
+      },
+      "PageBase_DataType__IProjectStatusRead_": {
+        "title": "PageBase[DataType][IProjectStatusRead]",
+        "required": [
+          "items",
+          "total",
+          "pages"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IProjectStatusRead"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "size": {
+            "title": "Size",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "pages": {
+            "title": "Pages",
+            "type": "integer"
+          },
+          "next_page": {
+            "title": "Next Page",
+            "type": "integer"
+          },
+          "previous_page": {
+            "title": "Previous Page",
+            "type": "integer"
+          }
+        }
+      },
+      "PageBase_DataType__ISpanRead_": {
+        "title": "PageBase[DataType][ISpanRead]",
+        "required": [
+          "items",
+          "total",
+          "pages"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISpanRead"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "size": {
+            "title": "Size",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "pages": {
+            "title": "Pages",
+            "type": "integer"
+          },
+          "next_page": {
+            "title": "Next Page",
+            "type": "integer"
+          },
+          "previous_page": {
+            "title": "Previous Page",
+            "type": "integer"
+          }
+        }
+      },
+      "PageBase_DataType__ISubprojectRead_": {
+        "title": "PageBase[DataType][ISubprojectRead]",
+        "required": [
+          "items",
+          "total",
+          "pages"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ISubprojectRead"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "size": {
+            "title": "Size",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "pages": {
+            "title": "Pages",
+            "type": "integer"
+          },
+          "next_page": {
+            "title": "Next Page",
+            "type": "integer"
+          },
+          "previous_page": {
+            "title": "Previous Page",
+            "type": "integer"
+          }
+        }
+      },
+      "PageBase_DataType__ITowerRead_": {
+        "title": "PageBase[DataType][ITowerRead]",
+        "required": [
+          "items",
+          "total",
+          "pages"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITowerRead"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "size": {
+            "title": "Size",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "pages": {
+            "title": "Pages",
+            "type": "integer"
+          },
+          "next_page": {
+            "title": "Next Page",
+            "type": "integer"
+          },
+          "previous_page": {
+            "title": "Previous Page",
+            "type": "integer"
+          }
+        }
+      },
+      "PageBase_DataType__IWorkTypeRead_": {
+        "title": "PageBase[DataType][IWorkTypeRead]",
+        "required": [
+          "items",
+          "total",
+          "pages"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IWorkTypeRead"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "size": {
+            "title": "Size",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "pages": {
+            "title": "Pages",
+            "type": "integer"
+          },
+          "next_page": {
+            "title": "Next Page",
+            "type": "integer"
+          },
+          "previous_page": {
+            "title": "Previous Page",
+            "type": "integer"
+          }
+        }
+      },
+      "Project": {
+        "title": "Project",
+        "required": [
+          "name",
+          "order_number"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "order_number": {
+            "title": "Order Number",
+            "type": "string"
+          },
+          "curator_id": {
+            "title": "Curator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "title": "Customer Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin_id": {
+            "title": "Admin Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ProjectStatus": {
+        "title": "ProjectStatus",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        }
+      },
+      "Subproject": {
+        "title": "Subproject",
+        "required": [
+          "name",
+          "pl_segment_id",
+          "project_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pl_segment_id": {
+            "title": "Pl Segment Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date_planned": {
+            "title": "Start Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_planned": {
+            "title": "Complete Date Planned",
+            "type": "string",
+            "format": "date-time"
+          },
+          "start_date_real": {
+            "title": "Start Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete_date_real": {
+            "title": "Complete Date Real",
+            "type": "string",
+            "format": "date-time"
+          },
+          "towers": {
+            "title": "Towers",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "spans": {
+            "title": "Spans",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "string",
+            "format": "uuid"
+          },
+          "work_type_id": {
+            "title": "Work Type Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      },
+      "WorkType": {
+        "title": "WorkType",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}
