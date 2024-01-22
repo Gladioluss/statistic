@@ -38,3 +38,14 @@ class Project(BaseProject, BaseEntityModel, table=True):
             'cascade': 'all, delete-orphan'
         }
     )
+
+    @staticmethod
+    def _serialize_item(item: UUID | datetime) -> str | None:
+        if isinstance(item, UUID):
+            return str(item)
+        elif isinstance(item, datetime):
+            return item.isoformat()
+        return item
+
+    def to_dict(self) -> dict:
+        return {k: self._serialize_item(v) for k, v in super().dict().items()}

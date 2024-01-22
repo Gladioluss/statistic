@@ -24,6 +24,18 @@ class CRUDTower(CRUDBase[TowerEntity, ITowerCreate, ITowerUpdate]):
         )
         return await paginate(db_session, query, params)
 
+    async def get_paginated_list_by_object_id(
+            self,
+            object_id: UUID,
+            params: Params = Params(),
+            db_session: AsyncSession | None = None
+    ) -> Page[TowerEntity]:
+        db_session = db_session or super().get_db().session
+        query = (
+            select(TowerEntity).where(TowerEntity.object_id == object_id)
+        )
+        return await paginate(db_session, query, params)
+
     async def get_paginated_list_by_subproject_id(
             self,
             subproject_id: UUID,

@@ -21,6 +21,7 @@ fastapi-pagination = "^0.12.4"
 fastapi-limiter = "^0.1.5"
 uuid7 = "^0.1.0"
 prometheus-fastapi-instrumentator = "^6.1.0"
+aio-pika = "^9.3.0"
 
 
 

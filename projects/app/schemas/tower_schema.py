@@ -33,6 +33,7 @@ class ITowerWithObjectStatusRead(ITowerWithoutObjectStatusId):
 class ITowerWithoutSubprojectId(SQLModel):
     id: UUID
     name: str
+    object_id: UUID
     status_id: UUID | None = None
 
 
@@ -45,6 +46,8 @@ class ITowerFullInfoRead(SQLModel):
     name: str
     status: ObjectStatus | None = None
     subproject: Subproject
+    object_id: UUID
+
 
 
 

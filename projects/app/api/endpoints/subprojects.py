@@ -4,6 +4,8 @@ from uuid import UUID
 from typing import Annotated
 
 from app import crud
+from app.core.rabbit.queue_message_settings import QueueHeaders, QueueHeaderTypeValues
+from app.core.rabbit.rabbit_connection import rabbit_connection
 from app.schemas.response_schema import (
     IGetResponseBase,
     IGetResponsePaginated,
@@ -143,6 +145,7 @@ async def get_subproject_with_full_info_by_id(
 async def create_subproject(
         subproject: ISubprojectCreate
 ) -> IPostResponseBase[ISubprojectRead]:
+# ):
     """
     Creates a new subproject
     """
@@ -158,6 +161,14 @@ async def create_subproject(
         await project_status_checks.project_status_is_exist(id=subproject.status_id)
 
     new_subproject = await crud.subproject.create(obj_in=subproject)
+    await rabbit_connection.send_messages(
+        headers={
+            QueueHeaders.NAME: new_subproject.__tablename__,
+            QueueHeaders.TYPE: QueueHeaderTypeValues.CREATE
+            },
+        messages=new_subproject.to_dict()
+    )
+    # return new_subproject
     return create_response(data=new_subproject)
 
 
@@ -195,6 +206,13 @@ async def update_subproject(
         await project_status_checks.project_status_is_exist(id=subproject.status_id)
 
     subproject_updated = await crud.subproject.update(obj_current=current_subproject, obj_new=subproject)
+    await rabbit_connection.send_messages(
+        headers={
+            QueueHeaders.NAME: subproject_updated.__tablename__,
+            QueueHeaders.TYPE: QueueHeaderTypeValues.UPDATE
+        },
+        messages=subproject_updated.to_dict()
+    )
     return create_response(data=subproject_updated)
 
 

@@ -75,11 +75,13 @@ async def insert_test_data(db_session: AsyncSession):
                 tower = ITowerCreate (
                     name="Опора {}".format(random.randint(0, 1408)),
                     subproject_id=subproject_id,
+                    object_id=uuid7(),
                     status_id=obj_status_current.id
                 )
                 span = ISpanCreate (
                     name="Пролет {}".format(random.randint(0, 1408)),
                     subproject_id=subproject_id,
+                    object_id=uuid7(),
                     status_id=obj_status_current.id
                 )
 

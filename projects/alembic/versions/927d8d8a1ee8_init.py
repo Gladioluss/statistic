@@ -1,17 +1,17 @@
 """init
 
-Revision ID: 6147cdd334cf
+Revision ID: 927d8d8a1ee8
 Revises: 
-Create Date: 2023-08-10 12:06:40.123766
+Create Date: 2023-11-01 14:42:04.339071
 
 """
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy.dialects import postgresql
 import sqlmodel
 
+
 # revision identifiers, used by Alembic.
-revision = '6147cdd334cf'
+revision = '927d8d8a1ee8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -63,8 +63,6 @@ def upgrade() -> None:
     )
     op.create_index(op.f('ix_Project_id'), 'Project', ['id'], unique=False)
     op.create_table('Subproject',
-    sa.Column('towers', postgresql.ARRAY(sa.String()), nullable=True),
-    sa.Column('spans', postgresql.ARRAY(sa.String()), nullable=True),
     sa.Column('id', sqlmodel.sql.sqltypes.GUID(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
@@ -91,6 +89,7 @@ def upgrade() -> None:
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('name', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
     sa.Column('subproject_id', sqlmodel.sql.sqltypes.GUID(), nullable=False),
+    sa.Column('object_id', sqlmodel.sql.sqltypes.GUID(), nullable=False),
     sa.Column('status_id', sqlmodel.sql.sqltypes.GUID(), nullable=True),
     sa.ForeignKeyConstraint(['status_id'], ['ObjectStatus.id'], ),
     sa.ForeignKeyConstraint(['subproject_id'], ['Subproject.id'], ),
@@ -103,6 +102,7 @@ def upgrade() -> None:
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('name', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
     sa.Column('subproject_id', sqlmodel.sql.sqltypes.GUID(), nullable=False),
+    sa.Column('object_id', sqlmodel.sql.sqltypes.GUID(), nullable=False),
     sa.Column('status_id', sqlmodel.sql.sqltypes.GUID(), nullable=True),
     sa.ForeignKeyConstraint(['status_id'], ['ObjectStatus.id'], ),
     sa.ForeignKeyConstraint(['subproject_id'], ['Subproject.id'], ),

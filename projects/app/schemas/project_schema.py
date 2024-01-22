@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlmodel import SQLModel
 
 from app.models.project import BaseProject
-from app.schemas.subproject_schema import ISubprojectWithoutProjectId
+from app.schemas.subproject_schema import ISubprojectWithoutProjectId, ISubprojectFullInfoRead
 from app.utils.partial import optional
 from app.models.status import ProjectStatus
 
@@ -62,5 +62,6 @@ class IFullProjectInfoRead(SQLModel):
     admin_id: UUID | None
     status: ProjectStatus | None
     subprojects: list[ISubprojectWithoutProjectId] | None = []
+
 
 

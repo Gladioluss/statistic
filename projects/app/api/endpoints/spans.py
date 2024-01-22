@@ -3,6 +3,8 @@ from fastapi_pagination import Params
 from typing import Annotated
 
 from app import crud
+from app.core.rabbit.queue_message_settings import QueueHeaders, QueueHeaderTypeValues
+from app.core.rabbit.rabbit_connection import rabbit_connection
 from app.schemas.response_schema import (
     IGetResponseBase,
     IGetResponsePaginated,
@@ -43,6 +45,21 @@ async def get_spans_list_by_status_id(
     """
     spans = await crud.span.get_paginated_list_by_status_id(
         status_id=current_object_status.id,
+        params=params
+    )
+    return create_response(data=spans)
+
+
+@router.get("/list/object_id")
+async def get_spans_list_by_object_id(
+        object_id: UUID,
+        params: Params = Depends()
+) -> IGetResponsePaginated[ISpanRead]:
+    """
+    Gets a paginated list of spans by object id
+    """
+    spans = await crud.span.get_paginated_list_by_object_id(
+        object_id=object_id,
         params=params
     )
     return create_response(data=spans)
@@ -115,7 +132,17 @@ async def create_span(
     if span.status_id:
         await object_status_checks.object_status_is_exist(id=span.status_id)
 
-    new_span = await crud.subproject.create(obj_in=span)
+    new_span = await crud.span.create(obj_in=span)
+    status = await crud.object_status.get(id=new_span.status_id)
+
+    await rabbit_connection.send_messages(
+        headers={
+            QueueHeaders.NAME: new_span.__tablename__,
+            QueueHeaders.TYPE: QueueHeaderTypeValues.CREATE,
+            QueueHeaders.STATUS: status.name,
+        },
+        messages=new_span.to_dict()
+    )
     return create_response(data=new_span)
 
 
@@ -145,6 +172,16 @@ async def update_span(
         await subproject_checks.subproject_is_exist(id=span.subproject_id)
 
     span_updated = await crud.span.update(obj_current=current_span, obj_new=span)
+    status = await crud.object_status.get(id=span_updated.status_id)
+
+    await rabbit_connection.send_messages(
+        headers={
+            QueueHeaders.NAME: span_updated.__tablename__,
+            QueueHeaders.TYPE: QueueHeaderTypeValues.UPDATE,
+            QueueHeaders.STATUS: status.name,
+        },
+        messages=span_updated.to_dict()
+    )
     return create_response(data=span_updated)
 
 

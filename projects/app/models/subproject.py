@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Optional
 from sqlmodel import SQLModel
 from sqlalchemy import Column
-from sqlmodel import String
+
 from sqlalchemy.dialects import postgresql
 from app.models.base_uuid import BaseEntityModel
 
@@ -16,17 +16,6 @@ class BaseSubproject(SQLModel):
     complete_date_planned: datetime | None
     start_date_real: datetime | None
     complete_date_real: datetime | None
-    towers: list[UUID] = Field(
-        default=None, sa_column=Column(
-            postgresql.ARRAY(String())
-        )
-    )
-
-    spans: list[UUID] = Field(
-        default=None, sa_column=Column(
-            postgresql.ARRAY(String())
-        )
-    )
     workers: UUID | None = None
     work_type_id: UUID | None = Field(foreign_key="WorkType.id", nullable=True)
     project_id: UUID = Field(foreign_key="Project.id")
@@ -77,3 +66,15 @@ class Subproject(BaseSubproject, BaseEntityModel, table=True):
             'cascade': 'all, delete-orphan'
         }
     )
+
+    @staticmethod
+    def _serialize_item(item: UUID | datetime) -> str | None:
+        if isinstance(item, UUID):
+            return str(item)
+        elif isinstance(item, datetime):
+            return item.isoformat()
+        return item
+
+    def to_dict(self) -> dict:
+        return {k: self._serialize_item(v) for k, v in super().dict().items()}
+

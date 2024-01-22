@@ -1,3 +1,7 @@
+from typing import Any
+
+from sqlalchemy import inspect
+
 from app.utils.uuid import uuid7, UUID
 from sqlmodel import SQLModel as _SQLModel, Field
 from sqlalchemy.orm import declared_attr
@@ -21,3 +25,6 @@ class BaseEntityModel(SQLModel):
     )
 
     created_at: datetime | None = Field(default_factory=datetime.utcnow)
+
+
+

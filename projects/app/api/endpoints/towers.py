@@ -3,6 +3,8 @@ from fastapi_pagination import Params
 from typing import Annotated
 
 from app import crud
+from app.core.rabbit.queue_message_settings import QueueHeaders, QueueHeaderTypeValues
+from app.core.rabbit.rabbit_connection import rabbit_connection
 from app.schemas.response_schema import (
     IGetResponseBase,
     IGetResponsePaginated,
@@ -45,6 +47,21 @@ async def get_towers_list_by_status_id(
     """
     towers = await crud.tower.get_paginated_list_by_status_id(
         status_id=current_object_status.id,
+        params=params
+    )
+    return create_response(data=towers)
+
+
+@router.get("/list/object_id")
+async def get_towers_list_by_object_id(
+        object_id: UUID,
+        params: Params = Depends()
+) -> IGetResponsePaginated[ITowerRead]:
+    """
+    Gets a paginated list of towers by object id
+    """
+    towers = await crud.tower.get_paginated_list_by_object_id(
+        object_id=object_id,
         params=params
     )
     return create_response(data=towers)
@@ -117,7 +134,17 @@ async def create_tower(
     if tower.status_id:
         await object_status_checks.object_status_is_exist(id=tower.status_id)
 
-    new_tower = await crud.subproject.create(obj_in=tower)
+    new_tower = await crud.tower.create(obj_in=tower)
+    status = await crud.object_status.get(id=new_tower.status_id)
+
+    await rabbit_connection.send_messages(
+        headers={
+            QueueHeaders.NAME: new_tower.__tablename__,
+            QueueHeaders.TYPE: QueueHeaderTypeValues.CREATE,
+            QueueHeaders.STATUS: status.name,
+        },
+        messages=new_tower.to_dict()
+    )
     return create_response(data=new_tower)
 
 
@@ -145,6 +172,16 @@ async def update_tower(
         await object_status_checks.object_status_is_exist(id=tower.status_id)
 
     tower_updated = await crud.tower.update(obj_current=current_tower, obj_new=tower)
+    status = await crud.object_status.get(id=tower_updated.status_id)
+
+    await rabbit_connection.send_messages(
+        headers={
+            QueueHeaders.NAME: tower_updated.__tablename__,
+            QueueHeaders.TYPE: QueueHeaderTypeValues.UPDATE,
+            QueueHeaders.STATUS: status.name,
+        },
+        messages=tower_updated.to_dict()
+    )
     return create_response(data=tower_updated)
 
 

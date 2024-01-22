@@ -27,8 +27,6 @@ class ISubprojectWithoutWorkTypeId(SQLModel):
     complete_date_planned: datetime | None
     start_date_real: datetime | None
     complete_date_real: datetime | None
-    towers: list[UUID] | None = []
-    spans: list[UUID] | None = []
     workers: UUID | None = None
     project_id: UUID
     status_id: UUID | None #todo none везде
@@ -44,8 +42,6 @@ class ISubprojectWithoutProjectId(SQLModel):
     complete_date_planned: datetime | None
     start_date_real: datetime | None
     complete_date_real: datetime | None
-    towers: list[UUID] | None = []
-    spans: list[UUID] | None = []
     workers: UUID | None = None
     work_type_id: UUID
     status_id: UUID
@@ -58,8 +54,6 @@ class ISubprojectWithoutStatusId(SQLModel):
     complete_date_planned: datetime | None
     start_date_real: datetime | None
     complete_date_real: datetime | None
-    towers: list[UUID] | None = []
-    spans: list[UUID] | None = []
     workers: UUID | None = None
     work_type_id: UUID
     project_id: UUID

@@ -1,9 +1,16 @@
+import json
+
 from fastapi import APIRouter, Depends, Path
 from fastapi_pagination import Params
 from uuid import UUID
 from typing import Annotated
 
+from loguru import logger
+
 from app import crud
+from app.core.rabbit.queue_message_settings import QueueHeaders, QueueHeaderTypeValues
+from app.core.rabbit.rabbit_connection import rabbit_connection
+
 from app.schemas.response_schema import (
     IGetResponseBase,
     IGetResponsePaginated,
@@ -19,10 +26,9 @@ from app.schemas.project_schema import (
     IProjectRead,
     IProjectCreate,
     IProjectUpdate,
-    IProjectWithSubprojectsListRead
+    IProjectWithSubprojectsListRead,
 )
 
-from app.utils.exceptions.common import IdNotFoundException, NameExistException
 from app.models.project import Project
 from app.models.status import ProjectStatus
 from app.deps import project_deps, project_status_deps
@@ -39,6 +45,16 @@ async def get_projects(
     Gets a paginated list of projects
     """
     projects = await crud.project.get_multi_paginated(params=params)
+    return create_response(data=projects)
+
+
+@router.get("/list/id")
+async def get_projects_id(
+) -> IGetResponseBase[list[UUID]]:
+    """
+    Gets a list of projects id
+    """
+    projects = await crud.project.get_all_id()
     return create_response(data=projects)
 
 
@@ -109,7 +125,15 @@ async def create_project(
     if project.status_id: #todo потому что необяз поле
         await project_status_checks.project_status_is_exist(id=project.status_id)
     new_project = await crud.project.create(obj_in=project)
+    await rabbit_connection.send_messages(
+        headers={
+            QueueHeaders.NAME: new_project.__tablename__,
+            QueueHeaders.TYPE: QueueHeaderTypeValues.CREATE
+        },
+        messages=new_project.to_dict()
+    )
     return create_response(data=new_project)
+
 
 @router.put("/{id}")
 async def update_project(
@@ -125,6 +149,13 @@ async def update_project(
         await project_status_checks.project_status_is_exist(id=project.status_id)
 
     project_updated = await crud.project.update(obj_current=current_project, obj_new=project)
+    await rabbit_connection.send_messages(
+        headers={
+            QueueHeaders.NAME: project_updated.__tablename__,
+            QueueHeaders.TYPE: QueueHeaderTypeValues.UPDATE
+        },
+        messages=project_updated.to_dict()
+    )
     return create_response(data=project_updated)
 
 @router.delete("/{id}")

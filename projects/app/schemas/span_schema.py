@@ -34,6 +34,7 @@ class ISpanWithObjectStatusRead(ISpanWithoutObjectStatusId):
 class ISpanWithoutSubprojectId(SQLModel):
     id: UUID
     name: str
+    object_id: UUID
     wires: dict | None = None
     status_id: UUID | None = None
 
@@ -48,6 +49,9 @@ class ISpanWithFullInfoRead(SQLModel):
     wires: dict | None = None
     status: ObjectStatus | None = None
     subproject: Subproject
+    object_id: UUID
+
+
 
 
 

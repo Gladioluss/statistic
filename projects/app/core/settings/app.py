@@ -1,5 +1,5 @@
 import loguru
-from pydantic import BaseSettings, PostgresDsn, validator, AnyHttpUrl
+from pydantic import BaseSettings, PostgresDsn, validator, AnyHttpUrl, AnyUrl
 from typing import Any
 
 from app.core.settings.base import BaseAppSettings
@@ -20,6 +20,9 @@ class AppSettings(BaseAppSettings):
 
     ASYNC_DATABASE_URI: PostgresDsn | None
 
+    RABBITMQ_URL: AnyUrl
+    QUEUE_NAME: str
+
     @validator("ASYNC_DATABASE_URI", pre=True)
     def assemble_db_connection(cls, v: str | None, values: dict[str, Any]) -> Any:
 
@@ -33,6 +36,7 @@ class AppSettings(BaseAppSettings):
             port=str(values.get("DATABASE_PORT")),
             path=f"/{values.get('DATABASE_NAME') or ''}",
         )
+
     class Config:
         case_sensitive = True
         validate_assignment = True

@@ -1,12 +1,22 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from prometheus_fastapi_instrumentator import Instrumentator
 from starlette.middleware.cors import CORSMiddleware
 from fastapi_async_sqlalchemy import SQLAlchemyMiddleware
-from app.core.config import get_app_settings
-from app.api.default_router import default_router
+from app.core.config import settings
 
-settings = get_app_settings()
-app = FastAPI(title=settings.API_TITLE)
+from app.api.default_router import default_router
+from app.core.rabbit.rabbit_connection import rabbit_connection
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    await rabbit_connection.connect()
+    yield
+    await rabbit_connection.disconnect()
+
+app = FastAPI(title=settings.API_TITLE, lifespan=lifespan)
 
 app.include_router(router=default_router, prefix=settings.API_PREFIX)
 
@@ -29,5 +39,6 @@ if settings.CORS_ORIGINS:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
 
 Instrumentator().instrument(app).expose(app)

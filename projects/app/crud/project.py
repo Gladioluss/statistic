@@ -22,4 +22,15 @@ class CRUDProject(CRUDBase[Project, IProjectCreate, IProjectUpdate]):
         )
         return await paginate(db_session, query, params)
 
+    async def get_all(
+            self,
+            *,
+            db_session: AsyncSession | None = None,
+    ) -> list[Project]:
+        db_session = db_session or self.db.session
+        query = select(Project)
+        response = await db_session.execute(query)
+        return response.scalars().all()
+
+
 project = CRUDProject(Project)
